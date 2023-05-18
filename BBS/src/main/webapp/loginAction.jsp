@@ -13,9 +13,24 @@
 </head>
 <body>
 	<%
+		String userID = null;
+		if(session.getAttribute("userID") != null){
+			userID = (String)session.getAttribute("userID");
+		}//현재 접속한 세션이 있는지 체크
+		
+		if(userID != null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('이미 로그인이 되어 있습니다')");
+			script.println("location.href='main.jsp'");
+			script.println("</script>");
+		}// 이미 로그인했으면 다시 로그인을 할 수 없게 한다
+		
 		UserDAO userDAO=new UserDAO();//하나의 인스턴스
 		int result=userDAO.login(user.getUserID(), user.getUserPassword());//페이지에 입력된 아이디와 비번을 login함수에 넣어줌
+		
 		if(result==1){ //로그인성공
+			session.setAttribute("userID", user.getUserID()); // 로그인에 성공하면 세션을 부여
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
 			script.println("location.href='main.jsp'");//로그인에 성공하면 main페이지로
