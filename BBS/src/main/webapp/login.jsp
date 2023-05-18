@@ -4,7 +4,7 @@
 <head>
 <meta charset="EUC-KR">
 
-<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css"> <!-- 참조  -->
+<link rel="stylesheet" href="/css/bootstrap.css"> <!-- 참조  -->
 
 <title>로그인</title>
 </head>
