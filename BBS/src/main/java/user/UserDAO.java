@@ -14,9 +14,9 @@ public class UserDAO {
 	
 	public UserDAO() {
 		 try {
-			String dbURL = "jdbc:mariadb://localhost:3306/bbs"; //mariaDB와 연결시켜주는 주소
+			String dbURL = "jdbc:mariadb://localhost:3307/bbs"; //mariaDB와 연결시켜주는 주소
 			String dbID = "root"; //mariaDB계정
-			String dbPassword = "skfodi"; //mariaDB비밀번호
+			String dbPassword = "4688"; //mariaDB비밀번호
 			Class.forName("org.mariadb.jdbc.Driver"); //JDBC연결클래스를 string타입으로 불러온다
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword); 
 			//드라이버 매니저에, 미리 저장했던 연결URL과 DB계정 정보를 담아 연결 설정을한다
