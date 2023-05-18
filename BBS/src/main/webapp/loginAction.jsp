@@ -1,45 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="user.UserDAO" %>
 <%@ page import="java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id="user" class="user.User" scope="page"></jsp:useBean><!-- ºóÀ» »ı¼ºÇÑ´Ù. -->
-<jsp:setProperty name="user" property="userID"/><!-- ºó¿¡ °ªÀ» ÀúÀåÇÑ´Ù. -->
+<jsp:useBean id="user" class="user.User" scope="page"></jsp:useBean><!-- ë¹ˆì„ ìƒì„±í•œë‹¤. -->
+<jsp:setProperty name="user" property="userID"/><!-- ë¹ˆì— ê°’ì„ ì €ì¥í•œë‹¤. -->
 <jsp:setProperty name="user" property="userPassword" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>·Î±×ÀÎ¾×¼Ç</title>
+<title>ë¡œê·¸ì¸ì•¡ì…˜</title>
 </head>
 <body>
 	<%
-		UserDAO userDAO=new UserDAO();//ÇÏ³ªÀÇ ÀÎ½ºÅÏ½º
-		int result=userDAO.login(user.getUserID(), user.getUserPassword());//ÆäÀÌÁö¿¡ ÀÔ·ÂµÈ ¾ÆÀÌµğ¿Í ºñ¹øÀ» loginÇÔ¼ö¿¡ ³Ö¾îÁÜ
-		if(result==1){ //·Î±×ÀÎ¼º°ø
+		UserDAO userDAO=new UserDAO();//í•˜ë‚˜ì˜ ì¸ìŠ¤í„´ìŠ¤
+		int result=userDAO.login(user.getUserID(), user.getUserPassword());//í˜ì´ì§€ì— ì…ë ¥ëœ ì•„ì´ë””ì™€ ë¹„ë²ˆì„ loginí•¨ìˆ˜ì— ë„£ì–´ì¤Œ
+		if(result==1){ //ë¡œê·¸ì¸ì„±ê³µ
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
-			script.println("location.href='main.jsp'");//·Î±×ÀÎ¿¡ ¼º°øÇÏ¸é mainÆäÀÌÁö·Î
+			script.println("location.href='main.jsp'");//ë¡œê·¸ì¸ì— ì„±ê³µí•˜ë©´ mainí˜ì´ì§€ë¡œ
 			script.println("</script>");
 		}
-		else if(result==0){ //·Î±×ÀÎ½ÇÆĞ
+		else if(result==0){ //ë¡œê·¸ì¸ì‹¤íŒ¨
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
-			script.println("alert('ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.')");
+			script.println("alert('ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
-		else if(result==-1){ //Á¸ÀçÇÏÁö¾ÊÀº¾ÆÀÌµğ
+		else if(result==-1){ //ì¡´ì¬í•˜ì§€ì•Šì€ì•„ì´ë””
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
-			script.println("alert('Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù.')");
+			script.println("alert('ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
-		else if(result==-2){ //µ¥ÀÌÅÍº£ÀÌ½º¿À·ù
+		else if(result==-2){ //ë°ì´í„°ë² ì´ìŠ¤ì˜¤ë¥˜
 			PrintWriter script=response.getWriter();
 			script.println("<script>");
-			script.println("alert('µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.')");
+			script.println("alert('ë°ì´í„°ë² ì´ìŠ¤ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.')");
 			script.println("history.back()");
 			script.println("</script>");
 		}

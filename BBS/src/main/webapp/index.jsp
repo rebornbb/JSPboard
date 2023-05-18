@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>JSP °Ô½ÃÆÇ À¥ »çÀÌÆ® index</title>
+<title>JSP ê²Œì‹œíŒ ì›¹ ì‚¬ì´íŠ¸ index</title>
 </head>
 <body>
 <script>location.href="login.jsp"</script>
