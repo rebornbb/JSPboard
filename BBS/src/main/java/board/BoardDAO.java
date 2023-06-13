@@ -128,4 +128,27 @@ public class BoardDAO {
 		}
 		return false;
 	}
+	
+	//하나의 게시글을 보는 메소드
+	public Board getBoard(int bbsID) {
+		String sql = "select * from board where bbsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bbsID);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				Board board = new Board();
+				board.setBbsID(rs.getInt(1));
+				board.setBbsTitle(rs.getString(2));
+				board.setUserID(rs.getString(3));
+				board.setBbsDate(rs.getString(4));
+				board.setBbsContent(rs.getString(5));
+				board.setBbsAvailable(rs.getInt(6));
+				return board;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }
