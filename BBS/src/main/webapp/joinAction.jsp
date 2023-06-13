@@ -2,7 +2,7 @@
 <%@page import="user.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
-<jsp:useBean id="user" class="user.User" scope="page" />
+<jsp:useBean id="user" class="user.User" scope="page" /><!-- 빈을 생성한다. -->
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
@@ -46,7 +46,7 @@
 				script.println("alert('이미 존재하는 아이디입니다')");
 				script.println("history.back()");
 				script.println("</script>");
-			}else {
+			}else { //result == 1
 				session.setAttribute("userID", user.getUserID());
 				PrintWriter script = response.getWriter();
 				script.println("<script>");

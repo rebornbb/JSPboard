@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="user.UserDAO" %>
-<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.io.PrintWriter" %> <!-- 자바스크립트를사용하기위함 -->
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="user" class="user.User" scope="page"></jsp:useBean><!-- 빈을 생성한다. -->
-<jsp:setProperty name="user" property="userID"/><!-- 빈에 값을 저장한다. -->
+<jsp:setProperty name="user" property="userID"/><!-- 로그인 페이지에서 받아온 사용자 ID를 userID(빈)_에 저장 -->
 <jsp:setProperty name="user" property="userPassword" />
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
 		}//현재 접속한 세션이 있는지 체크
 		
 		if(userID != null){
-			PrintWriter script = response.getWriter();
+			PrintWriter script = response.getWriter(); /* 자바스크립트문장실행 */
 			script.println("<script>");
 			script.println("alert('이미 로그인이 되어 있습니다')");
 			script.println("location.href='main.jsp'");
