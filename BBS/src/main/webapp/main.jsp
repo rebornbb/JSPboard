@@ -31,6 +31,9 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="main.jsp">메인</a></li>
                 <li><a href="bbs.jsp">게시판</a></li>
+                <% if (userID != null) { %> 
+                <li><a href="#">안녕하세요. <%= userID %>님</a></li>
+                <% } %>
             </ul>
             <%
             	//로그인하지않았을때 보여지는 화면
