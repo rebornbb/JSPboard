@@ -151,4 +151,33 @@ public class BoardDAO {
 		}
 		return null;
 	}
+	
+	//게시글 수정 메소드
+	public int update(int bbsID, String bbsTitle, String bbsContent) {
+		String sql = "update board set bbsTitle = ?, bbsContent = ? where bbsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bbsTitle);
+			pstmt.setString(2, bbsContent);
+			pstmt.setInt(3, bbsID);
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류
+	}
+	
+	//게시글 삭제 메소드
+	public int delete(int bbsID) {
+		//실제 데이터를 삭제하는 것이 아니라 게시글 유효숫자를 '0'으로 수정한다
+		String sql = "update board set bbsAvailable = 0 where bbsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bbsID);
+			return pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류 
+	}
 }
